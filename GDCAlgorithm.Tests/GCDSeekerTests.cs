@@ -3,7 +3,7 @@ using GCDAlgorithm;
 using NUnit.Framework;
 
 
-namespace GDCSeeker.Tests
+namespace GCDAlgorithm.Tests
 {
     public class GCDSeekerTests
     {
