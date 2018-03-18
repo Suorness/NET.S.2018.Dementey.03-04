@@ -14,7 +14,7 @@ namespace GCDAlgorithm.Tests
         [TestCase(0, 42, ExpectedResult = 42)]
         [TestCase(42, 0, ExpectedResult = 42)]
         [TestCase(0, 0, ExpectedResult = 0)]
-        [TestCase(-1, 20, ExpectedResult = 1)]       
+        [TestCase(-1, 20, ExpectedResult = 1)]
         [TestCase(-42, -84, ExpectedResult = 42)]
         [TestCase(int.MaxValue, int.MaxValue, ExpectedResult = int.MaxValue)]
         [TestCase(2, int.MaxValue, ExpectedResult = 1)]
@@ -41,6 +41,34 @@ namespace GCDAlgorithm.Tests
         public int SteinAlgorithmTests(params int[] numbers)
         {
             return GCDSeeker.SteinAlgorithm(numbers);
+        }
+
+        [TestCase()]
+        public void EuclideanAlgorithm_ThrowsArgumentNullException()
+        {
+            int[] numbers = null;
+            Assert.Throws<ArgumentNullException>(() => GCDSeeker.EuclideanAlgorithm(numbers));
+        }
+
+        [TestCase()]
+        public void EuclideanAlgorithm_ThrowsArgumentException()
+        {
+            int[] numbers = new int[] { };
+            Assert.Throws<ArgumentException>(() => GCDSeeker.EuclideanAlgorithm(numbers));
+        }
+
+        [TestCase()]
+        public void SteinAlgorithm_ThrowsArgumentNullException()
+        {
+            int[] numbers = null;
+            Assert.Throws<ArgumentNullException>(() => GCDSeeker.SteinAlgorithm(numbers));
+        }
+
+        [TestCase()]
+        public void SteinAlgorithm_ThrowsArgumentException()
+        {
+            int[] numbers = new int[] { };
+            Assert.Throws<ArgumentException>(() => GCDSeeker.SteinAlgorithm(numbers));
         }
     }
 }
