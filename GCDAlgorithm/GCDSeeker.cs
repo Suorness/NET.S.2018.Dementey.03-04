@@ -95,7 +95,6 @@ namespace GCDAlgorithm
                 throw new ArgumentException(nameof(numbers));
             }
 
-
             numbers = AbsArray(numbers);
 
             int resultGCD = numbers[numbers.Length - 1];
@@ -155,6 +154,7 @@ namespace GCDAlgorithm
                     value2 = value2 - value1;
                 }
             }
+
             return value1;
         }
 

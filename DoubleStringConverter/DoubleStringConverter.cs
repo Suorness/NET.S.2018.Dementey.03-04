@@ -60,7 +60,6 @@ namespace DoubleStringConverter
 
         private static int GetExponent(double value)
         {
-
             int grade = 0;
 
             double fraction = (value / Math.Pow(2, grade)) - 1;
@@ -76,7 +75,7 @@ namespace DoubleStringConverter
                     grade--;
                 }
 
-                fraction = value / Math.Pow(2, grade) - 1;
+                fraction = (value / Math.Pow(2, grade)) - 1;
             }
 
             grade += ExponentOffset;
@@ -91,7 +90,6 @@ namespace DoubleStringConverter
 
         private static string GetMantissaBinary(double value, int exponent)
         {
-
             exponent -= ExponentOffset;
 
             double fraction;
@@ -121,6 +119,7 @@ namespace DoubleStringConverter
                     bit = TrueChar;
                     value -= 1;
                 }
+
                 result.Append(bit);
             }
 
@@ -129,7 +128,6 @@ namespace DoubleStringConverter
 
         private static string IntToBinary(long value)
         {
-
             string binary = string.Empty;
             long remainder;
 
@@ -142,7 +140,5 @@ namespace DoubleStringConverter
 
             return binary;
         }
-
     }
-
 }

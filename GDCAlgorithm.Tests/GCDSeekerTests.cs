@@ -2,7 +2,6 @@
 using GCDAlgorithm;
 using NUnit.Framework;
 
-
 namespace GCDAlgorithm.Tests
 {
     public class GCDSeekerTests
@@ -43,28 +42,28 @@ namespace GCDAlgorithm.Tests
             return GCDSeeker.SteinAlgorithm(numbers);
         }
 
-        [TestCase()]
+        [TestCase]
         public void EuclideanAlgorithm_ThrowsArgumentNullException()
         {
             int[] numbers = null;
             Assert.Throws<ArgumentNullException>(() => GCDSeeker.EuclideanAlgorithm(numbers));
         }
 
-        [TestCase()]
+        [TestCase]
         public void EuclideanAlgorithm_ThrowsArgumentException()
         {
             int[] numbers = new int[] { };
             Assert.Throws<ArgumentException>(() => GCDSeeker.EuclideanAlgorithm(numbers));
         }
 
-        [TestCase()]
+        [TestCase]
         public void SteinAlgorithm_ThrowsArgumentNullException()
         {
             int[] numbers = null;
             Assert.Throws<ArgumentNullException>(() => GCDSeeker.SteinAlgorithm(numbers));
         }
 
-        [TestCase()]
+        [TestCase]
         public void SteinAlgorithm_ThrowsArgumentException()
         {
             int[] numbers = new int[] { };
