@@ -1,7 +1,10 @@
-﻿using NUnit.Framework;
-
-namespace DoubleStringConverter.Tests
+﻿namespace DoubleStringConverter.Tests
 {
+    using NUnit.Framework;
+
+    /// <summary>
+    /// Class for testing the method DoubleStringConverter
+    /// </summary>
     public class DoubleStringConverterTests
     {
         [TestCase(-255.255, ExpectedResult =

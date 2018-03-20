@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DoubleStringConverter
+﻿namespace DoubleStringConverter
 {
+    using System;
+    using System.Text;
+
     /// <summary>
     /// Provides an extension method for double that converts double to a string
     /// </summary>
     public static class DoubleStringConverter
     {
+        #region private const
         private const char TrueChar = '1';
         private const char FalseChar = '0';
 
@@ -18,7 +16,9 @@ namespace DoubleStringConverter
         private const int ExponentLength = 11;
         private const int MantissaLength = 52;
         private const int UnnormalExponentOffset = -1022;
+        #endregion private const
 
+        #region public method
         /// <summary>
         /// Converts double into string in binary format.
         /// </summary>
@@ -39,7 +39,9 @@ namespace DoubleStringConverter
 
             return sign + exponent + mantissa;
         }
+        #endregion public method
 
+        #region private method
         private static char GetSignChar(double value)
         {
             var sign = FalseChar;
@@ -140,5 +142,6 @@ namespace DoubleStringConverter
 
             return binary;
         }
+        #endregion private method
     }
 }

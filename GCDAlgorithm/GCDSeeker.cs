@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GCDAlgorithm
+﻿namespace GCDAlgorithm
 {
+    using System;
+    using System.Diagnostics;
+
     /// <summary>
     /// Calculates greatest common divisor of numbers  by different methods.
     /// Euclidean and Stein's algorithms.
     /// </summary>
     public static class GCDSeeker
     {
+        #region public method
         /// <summary>
         /// Finds the greatest common divisor of numbers by the Euclidean algorithm.
         /// </summary>
@@ -130,7 +127,9 @@ namespace GCDAlgorithm
 
             return result;
         }
+        #endregion public method
 
+        #region private method
         private static int Euclid(int value1, int value2)
         {
             if (value1.Equals(0))
@@ -216,5 +215,6 @@ namespace GCDAlgorithm
 
             return absArray;
         }
+        #endregion private method
     }
 }

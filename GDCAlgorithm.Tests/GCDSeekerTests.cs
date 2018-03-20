@@ -1,9 +1,12 @@
-﻿using System;
-using GCDAlgorithm;
-using NUnit.Framework;
-
-namespace GCDAlgorithm.Tests
+﻿namespace GCDAlgorithm.Tests
 {
+    using System;
+    using GCDAlgorithm;
+    using NUnit.Framework;
+
+    /// <summary>
+    /// Class for testing methods for finding GCD
+    /// </summary>
     public class GCDSeekerTests
     {
         [TestCase(12, 24, 4, ExpectedResult = 4)]
