@@ -174,7 +174,7 @@
             return result;
         }
 
-        private static int CalculateGcd(Func<int,int,int> func, int[] numbers)
+        private static int CalculateGcd(Func<int, int, int> func, int[] numbers)
         {
             if (numbers == null)
             {
