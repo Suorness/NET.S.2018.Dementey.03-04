@@ -23,28 +23,7 @@
         /// <returns> The greatest common divisor of numbers array. </returns>
         public static int EuclideanAlgorithm(params int[] numbers)
         {
-            if (numbers == null)
-            {
-                throw new ArgumentNullException(nameof(numbers));
-            }
-
-            if (numbers.Length < 2)
-            {
-                throw new ArgumentException(nameof(numbers));
-            }
-
-            numbers = AbsArray(numbers);
-
-            int resultGCD = numbers[numbers.Length - 1];
-            int i = numbers.Length - 2;
-            do
-            {
-                resultGCD = Euclid(resultGCD, numbers[i]);
-                i--;
-            }
-            while (i > 0);
-
-            return resultGCD;
+            return CalculateGcd(Euclid, numbers);
         }
 
         /// <summary>
@@ -61,12 +40,7 @@
         /// <returns> The greatest common divisor of numbers array. </returns>
         public static int EuclideanAlgorithm(out TimeSpan leadTime, params int[] numbers)
         {
-            var watcher = Stopwatch.StartNew();
-            var result = EuclideanAlgorithm(numbers);
-            watcher.Stop();
-            leadTime = watcher.Elapsed;
-
-            return result;
+            return CalculateTime(() => EuclideanAlgorithm(numbers), out leadTime);
         }
 
         /// <summary>
@@ -82,28 +56,7 @@
         /// <returns> The greatest common divisor of numbers array.</returns>
         public static int SteinAlgorithm(params int[] numbers)
         {
-            if (numbers == null)
-            {
-                throw new ArgumentNullException(nameof(numbers));
-            }
-
-            if (numbers.Length < 2)
-            {
-                throw new ArgumentException(nameof(numbers));
-            }
-
-            numbers = AbsArray(numbers);
-
-            int resultGCD = numbers[numbers.Length - 1];
-            int i = numbers.Length - 2;
-            do
-            {
-                resultGCD = Stein(resultGCD, numbers[i]);
-                i--;
-            }
-            while (i > 0);
-
-            return resultGCD;
+            return CalculateGcd(Stein, numbers);
         }
 
         /// <summary>
@@ -120,12 +73,7 @@
         /// <returns> The greatest common divisor of numbers array.</returns>
         public static int SteinAlgorithm(out TimeSpan leadTime, params int[] numbers)
         {
-            var watcher = Stopwatch.StartNew();
-            var result = SteinAlgorithm(numbers);
-            watcher.Stop();
-            leadTime = watcher.Elapsed;
-
-            return result;
+            return CalculateTime(() => SteinAlgorithm(numbers), out leadTime);
         }
         #endregion public method
 
@@ -214,6 +162,42 @@
             }
 
             return absArray;
+        }
+
+        private static int CalculateTime(Func<int> function, out TimeSpan leadTime)
+        {
+            var watcher = Stopwatch.StartNew();
+            var result = function();
+            watcher.Stop();
+            leadTime = watcher.Elapsed;
+
+            return result;
+        }
+
+        private static int CalculateGcd(Func<int,int,int> func, int[] numbers)
+        {
+            if (numbers == null)
+            {
+                throw new ArgumentNullException(nameof(numbers));
+            }
+
+            if (numbers.Length < 2)
+            {
+                throw new ArgumentException(nameof(numbers));
+            }
+
+            numbers = AbsArray(numbers);
+
+            int resultGCD = numbers[numbers.Length - 1];
+            int i = numbers.Length - 2;
+            do
+            {
+                resultGCD = func(resultGCD, numbers[i]);
+                i--;
+            }
+            while (i > 0);
+
+            return resultGCD;
         }
         #endregion private method
     }
